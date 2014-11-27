@@ -7,7 +7,7 @@ Statens Vegvesen.
 
 ## Hvordan bruke verktøyet?
 Verktøyet er nettbasert og finnes på adressen
-(https://rawgit.com/vofo-no/kursadmin-hjelpetekster/master/demo/index.html).
+(https://rawgit.com/vofo-no/ssb-rapport-tester/master/build/index.html).
 
 Selve programmet kjører i nettleseren din, så det kreves en moderne og oppdatert
 nettleser. Store og tunge filer kan også kreve en relativt kraftig datamaskin.
