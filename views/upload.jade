@@ -1,0 +1,100 @@
+doctype html
+html(lang="nb",ng-app="uploadApp")
+	head
+		title Test av SSB-fil
+		meta(charset="utf-8")
+		link(rel="Stylesheet",href="https://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cosmo/bootstrap.min.css")
+	body(ng-controller="FileController as fileCtrl")
+		.jumbotron
+			.container-fluid
+				.row
+					.col-lg-6
+						h1 Test av SSB-fil {{rapportYear}}
+						p Voksenopplæringsforbundet (VOFO)
+						label(for="fileInput") Rapportfil:
+						input.form-control(type="file",fileread="fileCtrl.csvFile")#fileInput
+						p(ng-show="analyzing") {{statusText}} {{progress}} %...
+						p Det er {{courses}} gyldige kurs i den valgte fila.
+					.col-lg-6
+						.row(ng-show='chart')
+							.col-sm-6
+								h4 Deltakere: {{ courseDetails.m + courseDetails.k }}
+								canvas(tc-chartjs-pie,chart-options="chart.deltaker.options",chart-data="chart.deltaker.data")
+							.col-sm-6
+								h4 Timer: {{ courseDetails.t }}
+								canvas(tc-chartjs-bar,chart-options="chart.timer.options",chart-data="chart.timer.data")
+		.container-fluid
+			div(ng-show="feilRader")
+				h2 Feilmeldinger
+				table.table.table-condensed.table-hover.table-bordered
+					thead
+						tr
+							th Rad
+							th Stf.
+							th Org.
+							th Kommune
+							th Kurs-ID
+							th Emnekode
+							th Nivå
+							th Eval.
+							th M10
+							th M20
+							th M30
+							th M40
+							th M50
+							th M60
+							th K10
+							th K20
+							th K30
+							th K40
+							th K50
+							th K60
+							th §24 menn
+							th §24 kvinner
+							th Fra dato
+							th Til dato
+							th Timer
+							th El-timer
+							th Tidspunkt
+							th Feilmeldinger
+					tbody
+						tr(ng-repeat="rad in feilRader | orderBy: rad.line")
+							td {{rad.line}}
+							td {{rad.stf}}
+							td(ng-class="{danger: rad._feilfelt['org']}") {{rad.org}}
+							td(ng-class="{danger: rad._feilfelt['kommune']}") {{rad.kommune}}
+							td(ng-class="{danger: rad._feilfelt['kursId']}") {{rad.kursId}}
+							td(ng-class="{danger: rad._feilfelt['emnekode']}") {{rad.emnekode}}
+							td(ng-class="{danger: rad._feilfelt['niva']}") {{rad.niva}}
+							td(ng-class="{danger: rad._feilfelt['evaluering']}") {{rad.evaluering}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m1}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m2}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m3}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m4}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m5}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.m6}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k1}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k2}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k3}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k4}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k5}}
+							td(ng-class="{danger: rad._feilfelt['deltakere']}") {{rad.k6}}
+							td(ng-class="{danger: rad._feilfelt['m24']}") {{rad.m24}}
+							td(ng-class="{danger: rad._feilfelt['k24']}") {{rad.k24}}
+							td(ng-class="{danger: rad._feilfelt['fra']}") {{rad.fra}}
+							td(ng-class="{danger: rad._feilfelt['til']}") {{rad.til}}
+							td(ng-class="{danger: rad._feilfelt['timer']}") {{rad.timer}}
+							td(ng-class="{danger: rad._feilfelt['elTimer']}") {{rad.elTimer}}
+							td(ng-class="{danger: rad._feilfelt['tidspunkt']}") {{rad.tidspunkt}}
+							td
+								ul
+									li(ng-repeat="mld in rad.feil") <strong>{{mld.felt}}</strong> {{mld.melding}}
+
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js")
+		<!-- @if DEBUG -->
+		script(src="./src/chartjs.js")
+		script(src="./src/tc-angular-chartjs.js")
+		script(src="./src/papa.js")
+		script(src="./src/upload.js")
+		<!-- @endif -->
+		script(src="upload.min.js")
