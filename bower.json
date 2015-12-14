@@ -1,0 +1,24 @@
+{
+  "name": "ssb-rapport-tester",
+  "description": "Testverktøy for SSB-rapportfiler",
+  "authors": [
+    "Voksenopplæringsforbundet <kursadmin@vofo.no>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vofo-no/ssb-rapport-tester",
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "papaparse": "~4.1.2",
+    "tc-angular-chartjs": "~1.0.12"
+  }
+}

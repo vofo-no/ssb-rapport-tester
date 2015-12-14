@@ -90,11 +90,4 @@ html(lang="nb",ng-app="uploadApp")
 								ul
 									li(ng-repeat="mld in rad.feil") <strong>{{mld.felt}}</strong> {{mld.melding}}
 
-		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js")
-		<!-- @if DEBUG -->
-		script(src="./src/chartjs.js")
-		script(src="./src/tc-angular-chartjs.js")
-		script(src="./src/papa.js")
-		script(src="./src/upload.js")
-		<!-- @endif -->
 		script(src="upload.min.js")
