@@ -51,6 +51,7 @@ validateRow = (row, line)->
   else
     #parse numbers to integers
     for i in [0..25]
+      row[i] = row[i].toString().replace ',', '.'
       row[i] = Math.floor(row[i]) unless isNaN(row[i])
 
     rowErrs['0'] = 'Studieforbundets nummer er ikke gyldig' unless row[0] in VALID_STFS

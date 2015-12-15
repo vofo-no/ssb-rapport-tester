@@ -90,6 +90,7 @@
       rowErrs['-1'] = 'Forventet 26 felter. Hopper over denne raden.';
     } else {
       for (i = k = 0; k <= 25; i = ++k) {
+        row[i] = row[i].toString().replace(',', '.');
         if (!isNaN(row[i])) {
           row[i] = Math.floor(row[i]);
         }
