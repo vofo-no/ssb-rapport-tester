@@ -10,7 +10,7 @@ VALID_SUBJECTS = [101,102,103,104,105,106,107,108,109,110,111,112,199,205,206,20
 REPORT_YEAR = new Date().getFullYear()
 REPORT_YEAR -= 1 if new Date().getMonth() < 4
 
-MUNICIPALITIES = []
+MUNICIPALITIES = [2111,2121,2131,2211,2311,2321]
 
 for county in [1..22] when county != 13
   MUNICIPALITIES.push county * 100
@@ -49,6 +49,10 @@ validateRow = (row, line)->
   if row.length < 26
     rowErrs['-1'] = 'Forventet 26 felter. Hopper over denne raden.'
   else
+    #parse numbers to integers
+    for i in [0..25]
+      row[i] = Math.floor(row[i]) unless isNaN(row[i])
+
     rowErrs['0'] = 'Studieforbundets nummer er ikke gyldig' unless row[0] in VALID_STFS
 
     unless row[1] == null || row[1].toString().match(/^\d{0,3}$/)

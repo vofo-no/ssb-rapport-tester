@@ -82,11 +82,11 @@
         return;
       }
       window.uploadData.reset();
+      showOutput();
       i = 0;
       setStatus('Leser fil...');
       $('#fileInput').prop('disabled', true);
       return Papa.parse(e.target.files[0], {
-        dynamicTyping: true,
         worker: true,
         skipEmptyLines: true,
         step: function(row) {

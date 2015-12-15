@@ -62,11 +62,11 @@ $ ->
   $('#fileInput').on 'change', (e)->
     return if e.target.files[0] == undefined
     window.uploadData.reset()
+    showOutput()
     i = 0
     setStatus 'Leser fil...'
     $('#fileInput').prop 'disabled', true
     Papa.parse e.target.files[0],
-      dynamicTyping: true
       worker: true
       skipEmptyLines: true
       step: (row)->

@@ -22,7 +22,7 @@
     REPORT_YEAR -= 1;
   }
 
-  MUNICIPALITIES = [];
+  MUNICIPALITIES = [2111, 2121, 2131, 2211, 2311, 2321];
 
   for (county = j = 1; j <= 22; county = ++j) {
     if (county !== 13) {
@@ -84,11 +84,16 @@
   };
 
   validateRow = function(row, line) {
-    var endDate, females, i, k, l, males, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, rowErrs, startDate;
+    var endDate, females, i, k, l, m, males, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, rowErrs, startDate;
     rowErrs = {};
     if (row.length < 26) {
       rowErrs['-1'] = 'Forventet 26 felter. Hopper over denne raden.';
     } else {
+      for (i = k = 0; k <= 25; i = ++k) {
+        if (!isNaN(row[i])) {
+          row[i] = Math.floor(row[i]);
+        }
+      }
       if (ref = row[0], indexOf.call(VALID_STFS, ref) < 0) {
         rowErrs['0'] = 'Studieforbundets nummer er ikke gyldig';
       }
@@ -131,14 +136,14 @@
           }
       }
       males = 0;
-      for (i = k = 7; k <= 12; i = ++k) {
+      for (i = l = 7; l <= 12; i = ++l) {
         if (!(row[i] >= 0)) {
           rowErrs[i.toString()] = 'Kursdeltakere må være et postivt heltall';
         }
         males += row[i];
       }
       females = 0;
-      for (i = l = 13; l <= 18; i = ++l) {
+      for (i = m = 13; m <= 18; i = ++m) {
         if (!(row[i] >= 0)) {
           rowErrs[i.toString()] = 'Kursdeltakere må være et postivt heltall';
         }
