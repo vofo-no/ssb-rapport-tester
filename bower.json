@@ -19,6 +19,6 @@
   ],
   "dependencies": {
     "papaparse": "~4.1.2",
-    "tc-angular-chartjs": "~1.0.12"
+    "jquery": "~2.1.4"
   }
 }
