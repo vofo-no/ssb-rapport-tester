@@ -2,8 +2,8 @@
 Dette verktøyet kan hjelpe studieforbund som genererer sine egne rapportfiler
 med å teste disse før de sendes inn.
 
-Testen følger filbeskrivelsen fra 2011, og henter oppdaterte kommunenummer fra
-Statens Vegvesen.
+Testen følger filbeskrivelsen fra 2011, og henter kommunenummer fra
+[SSB sine åpne datasett](http://www.ssb.no/omssb/tjenester-og-verktoy/api).
 
 ## Hvordan bruke verktøyet?
 Verktøyet er nettbasert og finnes på adressen
