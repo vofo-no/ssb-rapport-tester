@@ -47,7 +47,7 @@
     }
   };
 
-  xhr.open('GET', "http://data.ssb.no/api/klass/v1/classifications/131/codesAt.json?date=" + REPORT_YEAR + "-12-31", true);
+  xhr.open('GET', "https://data.ssb.no/api/klass/v1/classifications/131/codesAt.json?date=" + REPORT_YEAR + "-12-31", true);
 
   xhr.setRequestHeader('Accept', 'application/json');
 
