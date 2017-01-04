@@ -36,20 +36,20 @@
     var k, kommune, len, ref, results;
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        ref = JSON.parse(xhr.responseText).kommuner;
+        ref = JSON.parse(xhr.responseText).codes;
         results = [];
         for (k = 0, len = ref.length; k < len; k++) {
           kommune = ref[k];
-          results.push(MUNICIPALITIES.push(parseInt(kommune.nummer)));
+          results.push(MUNICIPALITIES.push(parseInt(kommune.code)));
         }
         return results;
       }
     }
   };
 
-  xhr.open('GET', 'https://www.vegvesen.no/nvdb/api/omrader/kommuner', true);
+  xhr.open('GET', "http://data.ssb.no/api/klass/v1/classifications/131/codesAt.json?date=" + REPORT_YEAR + "-12-31", true);
 
-  xhr.setRequestHeader('Accept', 'application/vnd.vegvesen.nvdb-v1+json');
+  xhr.setRequestHeader('Accept', 'application/json');
 
   xhr.send();
 
@@ -59,7 +59,7 @@
 
   validDate = function(datestr, maxDate, minDate) {
     var date, dateParts;
-    if (!datestr.match(/^\d\d?\.\d\d?\.\d\d(?:\d\d)?$/)) {
+    if (!(datestr && datestr.match(/^\d\d?\.\d\d?\.\d\d(?:\d\d)?$/))) {
       return [false, 'har ikke et gyldig format (dd.mm.åå).'];
     }
     dateParts = datestr.split('.');

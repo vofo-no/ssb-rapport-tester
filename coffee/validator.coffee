@@ -19,17 +19,17 @@ xhr = new XMLHttpRequest()
 xhr.onreadystatechange = ()->
   if xhr.readyState == XMLHttpRequest.DONE
     if xhr.status == 200
-      for kommune in JSON.parse(xhr.responseText).kommuner
-        MUNICIPALITIES.push parseInt(kommune.nummer)
-xhr.open('GET', 'https://www.vegvesen.no/nvdb/api/omrader/kommuner', true)
-xhr.setRequestHeader('Accept', 'application/vnd.vegvesen.nvdb-v1+json')
+      for kommune in JSON.parse(xhr.responseText).codes
+        MUNICIPALITIES.push parseInt(kommune.code)
+xhr.open('GET', "http://data.ssb.no/api/klass/v1/classifications/131/codesAt.json?date=#{REPORT_YEAR}-12-31", true)
+xhr.setRequestHeader('Accept', 'application/json')
 xhr.send()
 
 validatorInit = ->
   @validator_seen_ids = []
 
 validDate = (datestr, maxDate, minDate)->
-  return [false, 'har ikke et gyldig format (dd.mm.åå).'] unless datestr.match /^\d\d?\.\d\d?\.\d\d(?:\d\d)?$/
+  return [false, 'har ikke et gyldig format (dd.mm.åå).'] unless datestr && datestr.match /^\d\d?\.\d\d?\.\d\d(?:\d\d)?$/
   dateParts = datestr.split '.'
   if dateParts[2].length == 2
     dateParts[2] = 2000 + parseInt(dateParts[2])
