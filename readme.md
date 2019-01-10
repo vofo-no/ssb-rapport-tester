@@ -7,7 +7,7 @@ Testen følger filbeskrivelsen fra 2011, og henter kommunenummer fra
 
 ## Hvordan bruke verktøyet?
 Verktøyet er nettbasert og finnes på adressen
-(https://rawgit.com/vofo-no/ssb-rapport-tester/master/build/index.html).
+(https://vofo-no.github.io/ssb-rapport-tester/build/).
 
 Selve programmet kjører i nettleseren din, så det kreves en moderne og oppdatert
 nettleser.
