@@ -1,3 +1,6 @@
+> #### ⚠️ OBS: Dette verktøyet er utdatert!
+> Testverktøyet er erstattet av funksjonalitet i https://github.com/vofo-no/rapportering, som er tilgjengelig for alle studieforbundene gjennom den vanlige rapporteringssiden.
+
 # Testverktøy for SSB-rapportfiler
 Dette verktøyet kan hjelpe studieforbund som genererer sine egne rapportfiler
 med å teste disse før de sendes inn.
